@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBase Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo"><font face="stencil">BookBase</font></div>
+        <nav>
+            <a href="#" class="active"><font face="algerian">Discover</a>
+            <a href="#">My Library</a>
+            <a href="#">Download</a>
+            <a href="#">Favourite</a>
+            <a href="#">Settings</a>
+            <a href="#">Support</a>
+            <a href="#">Logout</a></a></font>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+     <!-- Top Right Profile Section -->
+<header class="top-profile">
+    <span class="user-name">Aditya</span>
+    <img src="aditya.jpg" class="user-img" alt="User">
+</header>
+
+    <main class="main">
+
+        <section class="recommended">
+            <div class="recommended-title">
+                <span>Recommended</span>
+                <a href="#">See All &gt;</a>
+            </div>
+<!-- Selected Book Preview Section -->
+<section class="selected-book">
+  <a href="upi-payment.html"><img id="selectedImg" src="" alt="Book Preview"></a>
+  <h3 id="selectedTitle"></h3>
+  <p id="selectedAuthor"></p>
+
+</section>
+            <div class="recommended-list">
+                <div class="book-card">
+                    <img src="book1.jpg" class="book-cover">
+                    <div class="book-title">The Psychology of Money</div>
+                    <div class="book-author">Morgan Housel</div>
+                </div>
+
+                <div class="book-card">
+                    <img src="book2.jpeg" class="book-cover">
+                    <div class="book-title">How Innovation Works</div>
+                    <div class="book-author">Matt Ridley</div>
+                </div>
+
+                <div class="book-card">
+                    <img src="book3.jpg" class="book-cover">
+                    <div class="book-title">Company of One</div>
+                    <div class="book-author">Paul Jarvis</div>
+                </div>
+
+                <div class="book-card">
+                    <img src="book4.jpg" class="book-cover">
+                    <div class="book-title">Stupore E Tremori</div>
+                    <div class="book-author">Amelie Nothomb</div>
+                </div>
+                <div class="book-card">
+                    <img src="book4.jpg" class="book-cover">
+                    <div class="book-title">Stupore E Tremori</div>
+                    <div class="book-author">Amelie Nothomb</div>
+                </div>
+                <div class="book-card">
+                    <img src="book4.jpg" class="book-cover">
+                    <div class="book-title">Stupore E Tremori</div>
+                    <div class="book-author">Amelie Nothomb</div>
+                </div>
+            </div>
+
+  
+  
+
+</section>
+
+
+        <section class="categories">
+            <div class="category-title">Categories</div>
+            <div class="category-list">
+                <span class="category-badge">All</span>
+                <span class="category-badge">Coding</span>
+                <span class="category-badge">Motivational</span>
+                <span class="category-badge">Drama</span>
+                <span class="category-badge">Business</span>
+                <span class="category-badge">Education</span>
+                <span class="category-badge">Geography</span>
+            </div>
+        </section>
+        
+
+    </main>
+
+   
+<!-- ✅ Bottom Fixed Search Bar -->
+<div class="bottom-search">
+    <input type="search" placeholder="Search your favourite books...">
+</div>
+<script>
+const bookCards = document.querySelectorAll(".book-card");
+const selectedSection = document.querySelector(".selected-book");
+const selectedImg = document.getElementById("selectedImg");
+const selectedTitle = document.getElementById("selectedTitle");
+const selectedAuthor = document.getElementById("selectedAuthor");
+
+bookCards.forEach(card => {
+  card.addEventListener("click", () => {
+    const imgSrc = card.querySelector(".book-cover").src;
+    const title = card.querySelector(".book-title").innerText;
+    const author = card.querySelector(".book-author").innerText;
+
+    selectedImg.src = imgSrc;
+    selectedTitle.innerText = title;
+    selectedAuthor.innerText = author;
+
+    selectedSection.style.display = "block";
+    selectedSection.scrollIntoView({ behavior: "smooth" });
+  });
+});
+</script>
+
+</body>
+</html>
+

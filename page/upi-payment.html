@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Payment</title>
+  <link rel="stylesheet" href="upi-payment.css">
+</head>
+
+<body>
+  <div class="container">
+      <h2>Scan & Pay</h2>
+
+      <img src="Qrcode.jpg" 
+           alt="QR Code"
+           class="qr-img">
+
+      <div class="upi-box">
+          <p>UPI ID: <span id="upiID">Chirag3955@axl</span></p>
+          <button onclick="copyUPI()">Copy</button>
+          <h3>Please Pay: 50rs</h3>
+      </div>
+
+      <p class="note">Scan the QR in any UPI App: GooglePay, PhonePe, Paytm</p>
+
+      <button class="pay-btn"><a href="#">I Have Paid</a></button>
+  </div>
+
+  <script>
+    function copyUPI() {
+      const upi = document.getElementById("upiID").innerText;
+      navigator.clipboard.writeText(upi);
+      alert("UPI ID Copied!");
+    }
+  </script>
+
+</body>
+</html>
