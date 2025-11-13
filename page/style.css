@@ -1,241 +1,217 @@
-/* Base layout & variables */
-:root{
-  --bg: #0f1315;
-  --panel: #0b0d0f;
-  --accent: #1572ff;
-  --muted: #9aa3ad;
-  --text: #e6eef3;
-  --radius: 12px;
-  --gap: 18px;
-  --max-width: 1200px;
+body {
+  background: #f6fafd;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
-*{box-sizing:border-box}
-html,body{
-  height:100%;
-  margin:0;
-  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg, var(--bg), #070809);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+.container {
+  display: flex;
+  height: 100vh;
 }
 
-/* Container */
-.container{
-  display:flex;
-  gap:var(--gap);
-  max-width:var(--max-width);
-  margin:30px auto;
-  padding:20px;
+/* Sidebar */
+.sidebar {
+  width: 210px;
+  background: #fff;
+  padding: 24px 0;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* SIDEBAR */
-.sidebar{
-  width:220px;
-  min-width:200px;
-  background:transparent;
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  position:relative;
-  transition: transform .28s ease, opacity .2s;
-}
-.logo{
-  color:var(--accent);
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-.sidebar nav a{
-  display:block;
-  color:var(--text);
-  text-decoration:none;
-  padding:10px 12px;
-  border-radius:10px;
-  margin:6px 0;
-  font-size:15px;
-  opacity:.9;
-}
-.sidebar nav a.active{
-  background: rgba(21,114,255,0.12);
-  color:var(--accent);
-  box-shadow: 0 2px 8px rgba(21,114,255,0.06);
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #377DFF;
+  margin-bottom: 30px;
 }
 
-/* MAIN */
-.main{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-  padding:10px 6px;
+.sidebar nav a {
+  text-decoration: none;
+  width: 100%;
+  padding: 14px 26px;
+  display: flex;
+  color: #333;
+  transition: .2s;
+  border-radius: 12px;
 }
 
-/* Top profile - placed above main content so it's aligned right on desktop */
-.top-profile{
-  position:absolute;
-  right:32px;
-  top:22px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-  z-index:40;
-}
-.top-profile .user-name{ font-weight:600; margin-right:8px; color:var(--muted) }
-.user-img{ width:36px; height:36px; border-radius:999px; object-fit:cover; }
-
-/* Recommended area */
-.recommended-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:6px;
-}
-.recommended-list{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:16px;
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  background: #e9f1ff;
+  color: #377DFF;
+  font-weight: bold;
 }
 
-/* Book cards */
-.book-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:12px;
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  align-items:start;
-  cursor:pointer;
-  transition: transform .16s ease, box-shadow .16s ease;
+/* Main */
+.main {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
 }
-.book-card:hover{ transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.5) }
-.book-cover{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-}
-.book-title{ font-weight:700; margin-top:4px; font-size:15px }
-.book-author{ color:var(--muted); font-size:13px }
 
-/* Selected Book preview */
-.selected-book{
-  display:flex;
-  gap:18px;
-  align-items:flex-start;
-  margin:18px 0;
+.recommended-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
 }
-.selected-book img{ width:220px; height:320px; object-fit:cover; border-radius:12px; }
-.selected-book h3{ margin:0 0 6px 0; font-size:20px }
-.selected-book p{ margin:0; color:var(--muted) }
+
+.recommended-list {
+  display: flex;
+  gap: 22px;
+  margin-top: 16px;
+}
+
+.book-card {
+  width: 140px;
+  background: #fff;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(55,125,255,0.12);
+  transition: .2s;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+}
+
+.book-cover {
+  width: 100px;
+  height: 140px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.book-title {
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #888;
+}
 
 /* Categories */
-.categories .category-list{ display:flex; gap:10px; flex-wrap:wrap }
-.category-badge{ background:transparent; border:1px solid rgba(255,255,255,0.04); padding:8px 12px; border-radius:999px; color:var(--muted); font-size:13px }
-
-/* Bottom search */
-.bottom-search{
-  position:fixed;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:18px;
-  width:min(940px, calc(100% - 40px));
-  background: rgba(0,0,0,0.55);
-  padding:10px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-}
-.bottom-search input{
-  width:100%;
-  background:transparent;
-  border:0;
-  outline:none;
-  color:var(--text);
-  font-size:15px;
-  padding:8px 12px;
+.category-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 25px 0 8px;
 }
 
-/* ---------- Responsive rules for smaller screens ---------- */
-@media (max-width: 1000px){
-  .recommended-list{ grid-template-columns: repeat(2, 1fr) }
-  .container{ gap:12px; padding:12px }
-  .sidebar{ width:200px }
-  .selected-book img{ width:180px; height:260px }
+.category-list {
+  display: flex;
+  gap: 14px;
 }
 
-@media (max-width: 768px){
-  /* Make container stacked */
-  .container{
-    display:block;
-    max-width:980px;
-    margin:16px auto;
-    padding:16px;
-  }
-
-  /* top-profile: put inside document flow */
-  .top-profile{
-    position:relative;
-    right:auto;
-    top:auto;
-    justify-content:space-between;
-    margin-bottom:12px;
-  }
-
-  /* Sidebar becomes hidden by default and slides in as overlay when open */
-  .sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    height:100%;
-    width:260px;
-    background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(7,7,8,0.98));
-    transform: translateX(-120%);
-    z-index:60;
-    box-shadow: 8px 0 30px rgba(0,0,0,0.6);
-    padding:22px;
-  }
-  .sidebar.open{
-    transform: translateX(0);
-  }
-
-  /* container main portion — add padding to compensate for hidden sidebar */
-  .main{ padding-top:8px }
-
-  /* make the recommended list single column on small screens */
-  .recommended-list{ grid-template-columns: 1fr; }
-  .book-cover{ height:200px }
-
-  /* Selected book preview becomes column */
-  .selected-book{ flex-direction:column; align-items:center; text-align:center }
-  .selected-book img{ width:180px; height:260px }
-
-  /* Bottom search full width */
-  .bottom-search{ width:calc(100% - 32px) }
-
-  /* Hamburger button (we'll add it in header) */
-  .hamburger{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:44px;
-    height:44px;
-    border-radius:10px;
-    background:transparent;
-    color:var(--text);
-    font-size:22px;
-    border:1px solid rgba(255,255,255,0.03);
-  }
-
-  /* Small tweaks for typography */
-  .book-title{ font-size:16px }
-  .book-author{ font-size:13px }
+.category-badge {
+  background: #e8f1fe;
+  padding: 6px 14px;
+  border-radius: 10px;
+  color: #377DFF;
 }
 
-/* Hide hamburger on desktop */
-.hamburger{ display:none }
+/* Right sidebar */
+.rightbar {
+  width: 260px;
+  background: #fff;
+  padding: 30px 20px;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* ✅ Bottom Search Bar */
+.bottom-search {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(850px, 92%);
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  padding: 14px 18px;
+  z-index: 10000;
+}
+
+.bottom-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+/* Top Right Profile */
+.top-profile {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 40px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  z-index: 20000;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #377DFF;
+}
+/* 3D Preview Section */
+.book-preview {
+  margin-top: 25px;
+  background: #fff;
+  padding: 22px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.book-preview img {
+  width: 260px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: grab;
+  user-select: none;
+}
+
+.book-preview p {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+/* Selected Book View */
+.selected-book {
+  margin-top: 25px;
+  background: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 18px;
+  display: none; /* पहले hidden */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.selected-book img {
+  width: 240px;
+  height: 340px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
